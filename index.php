@@ -1,4 +1,5 @@
 <?php session_start();
+include_once "./processes.php";
 include "./snipets/html_head.php";
 ?>
 
@@ -24,7 +25,6 @@ include "./snipets/html_head.php";
         </ul>
     </div>
     <!-- ----------------slideshow------------------- -->
-
     <div class="slideshow container">
         <div class="row">
             <div class="col-2">
@@ -49,30 +49,74 @@ include "./snipets/html_head.php";
     <div class="small-container">
         <h2 class="title">Categories</h2>
         <div class="row">
-            <div class="col-4">
-                <img src="./images/images_CategoryImages_laptops500.jpg">
-                <h4>Laptops</h4>
-            </div>
-            <div class="col-4">
-                <img src="./images/images_CategoryImages_desktops500.jpg">
-                <h4>Desktop</h4>
-            </div>
-            <div class="col-4">
-                <img src="./images/images_CategoryImages_monitors2500.jpg">
-                <h4>Monitors</h4>
-            </div>
-            <div class="col-4">
-                <img src="./images/images_CategoryImages_videoCards500.jpg">
-                <h4>Graphic Cards</h4>
-            </div>
+
+            <?php 
+                foreach ($categories as $category){
+                    // $category = str_replace("_"," ", $category);
+                    echo "
+                    <div class='col-4'>
+                        <img src='./images/$category.png'>
+                        <h4>".str_replace("_"," ", $category)."</h4>
+                    </div>
+                    
+                    ";
+                }
+            ?>
         </div>
     </div>
 
     <!-- -------------------- Popular Products -------------------- -->
     <div class="small-container">
         <h2 class="title">Popular Products</h2>
-        <div class="row">
-            <div class="col-5 product-box">
+        <div class="row popular_products" id="popular_products">
+
+
+            <?php 
+                $chosen = array();
+                for ($i = 0; $i < 4; $i++){
+                    $id = rand(0,11);
+                    $products[$id]['photos'][0];
+
+                    if (empty($chosen)){
+                        $chosen[] = $id;
+                    } else if (!in_array($id, $chosen)){
+                        $chosen[] = $id;
+                    } else {
+                        $i--;
+                        continue;
+                    }
+                    
+                    echo "
+                    <div class='col-5 product-box'>
+                        <div class='product_photo'>
+                            <img src='".$products[$id]['photos'][0]."'>
+                        </div>
+                        <div>
+                        <div class='favorite'>
+                            <i class='fa fa-heart-o'></i>
+                        </div>
+                        <h4>".substr($products[$id]['title'],0,15)."</h4>
+                        <p>".substr($products[$id]['top'],0,15)."...</p>
+                        <div class='rating'>
+                            <i class='fa fa-star'></i>
+                            <i class='fa fa-star'></i>
+                            <i class='fa fa-star'></i>
+                            <i class='fa fa-star'></i>
+                            <i class='fa fa-star'></i>
+                        </div>
+                        <div class='price'>
+                            <div class='upper'>$</div><span>".$products[$id]['price']."</span>
+                        </div>
+                        <a class='add_to_cart' href=''>
+                            <i class='fa fa-cart-plus'></i>
+                        </a>
+                        </div>
+                    </div>";
+                }
+            
+            ?>
+
+            <!-- <div class="col-5 product-box">
                 <img src="./images/macbook.jpg" alt="">
                 <div class="favorite">
                     <i class="fa fa-heart-o"></i>
@@ -85,14 +129,13 @@ include "./snipets/html_head.php";
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <!-- <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i> -->
+                    
                 </div>
                 <div class="price">
                     <div class="upper">$</div><span>1200</span>
                 </div>
                 <a class="add_to_cart" href=""><i class="fa fa-cart-plus"></i></a>
-            </div>
+            </div> -->
         </div>
     </div>
 

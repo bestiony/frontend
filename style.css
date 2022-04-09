@@ -40,7 +40,8 @@ body{
     min-height: 100%;
     width: 100%;
     opacity: 0.6;
-    display: none;
+    visibility: hidden;
+    /* display: none; */
 }
 
 
@@ -166,6 +167,7 @@ nav ul li a:hover{
 .col-2{
     flex-basis: 50%;
     min-width: 300px ;
+    
 }
 
 .col-2 img{
@@ -234,18 +236,37 @@ nav ul li a:hover{
 }
 
 /* ---------------- Popular Products ---------------- */
+#popular_products{
+    align-items: flex-end ;
+}
+
 
 .col-5{
+    min-height: 300px;
+    max-height: 400px;
     position: relative;
-    flex-basis: 20%;
-    min-width: 100px;
+    flex-basis: 23%;
+    min-width: 200px;
     padding: 10px;
     margin-bottom: 40px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     transition: transform 0.5s;
 }
+
+#popular_products .col-5{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 400px;
+}
+
 .col-5:hover{
     transform: translateY(-10px);
+}
+
+.product_photo {
+    margin: auto;
+
 }
 .col-5 img{
     max-width: 100%;
@@ -267,7 +288,7 @@ nav ul li a:hover{
 
 .price{
     display: inline-block;
-    margin-right: 3.5em;
+    margin-right: 1em;
 }
 
 .add_to_cart{
@@ -281,6 +302,7 @@ nav ul li a:hover{
 .favorite{
     position: absolute;
     right: 10px;
+    top: 50%;
     background: #fff;
     color:#D21F3C ;
     border-radius: 50%;
@@ -294,8 +316,9 @@ nav ul li a:hover{
     transition: opacity 0.5s;
 }
 
-.product-box:hover > .favorite{
+.product-box:hover  .favorite{
     opacity: 1;
+    z-index: 3;
 }
 /* ------------------ offer ------------ */
 
@@ -783,7 +806,7 @@ textarea{
 /* --------------- moving background ------------- */
 
 #background{
-    height: 1200px;
+    height: 950px;
 }
 
 #indexbg{

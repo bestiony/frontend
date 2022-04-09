@@ -6,7 +6,7 @@
                 </div>
                 <div class="searchbar">
                     <form action="" class="search">
-                        <input onclick="coverPage('block')" onblur="coverPage('none')" id="searchInput" type="text" name="searchwords" placeholder="what can we get you first?" />
+                        <input onclick="setVisible('visible')" onblur="setVisible('hidden')" id="searchInput" type="text" name="searchwords" placeholder="what can we get you first?" />
                         <a href="" class="searchbtn"><i class="fa fa-search"></i> </a>
                     </form>
                 </div>
