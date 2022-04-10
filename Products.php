@@ -1,4 +1,15 @@
 <?php session_start();
+include_once "./snipets/varriables.php";
+include_once "./snipets/functions.php";
+if (empty($products)){
+    include_once "./snipets/404.php";
+    exit;
+}
+
+if (strlen($_SERVER['QUERY_STRING'])== 0){
+
+}
+
 include "./snipets/html_head.php";
 ?>
 
@@ -42,71 +53,26 @@ include "./snipets/html_head.php";
                 <hr>
                 <h3>Brands</h3>
                 <div class="row">
-                    <a href=""><i class="fa fa-square-o"></i> ASUS</a>
-                    <a href=""><i class="fa fa-square-o"></i> Lenovo</a>
-                    <a href=""><i class="fa fa-square-o"></i> Acer</a>
-                    <a href=""><i class="fa fa-square-o"></i> hp</a>
-                    <a href=""><i class="fa fa-square-o"></i> DELL</a>
-                    <a href=""><i class="fa fa-square-o"></i> MSI</a>
+                    <?php 
+                        foreach($brands as $name){
+                            echo "<a href=''><i class='fa fa-square-o'></i> $name</a>";
+                        }
+                    ?>
+                    
                 </div>
             </div>
 
             <!-- --------------------  Products -------------------- -->
-                <div class="row All-products-row">
-                    <div class="col-3">
-                        <img src="./images/macbook.jpg" alt="">
-                        <h4>MacBook Pro,M1</h4>
-                        <p>really good</p>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <!-- <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i> -->
-                        </div>
-                        <div class="price">
-                            <div class="upper">$</div><span>1200</span>
-                        </div>
-                        <a class="add_to_cart" href=""><i class="fa fa-cart-plus"></i></a>
-                    </div>
-                    <div class="col-3">
-                        <img src="./images/macbook.jpg" alt="">
-                        <h4>MacBook Pro,M1</h4>
-                        <p>really good</p>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <!-- <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i> -->
-                        </div>
-                        <div class="price">
-                            <div class="upper">$</div><span>1200</span>
-                        </div>
-                        <a class="add_to_cart" href=""><i class="fa fa-cart-plus"></i></a>
-                    </div>
-                    <div class="col-3">
-                        <img src="./images/macbook.jpg" alt="">
-                        <h4>MacBook Pro,M1</h4>
-                        <p>really good</p>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <!-- <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i> -->
-                        </div>
-                        <div class="price">
-                            <div class="upper">$</div><span>1200</span>
-                        </div>
-                        <a class="add_to_cart" href=""><i class="fa fa-cart-plus"></i></a>
-                    </div>
+                <div class="row All-products-row" id="popular_products">
+
+                    <?php 
+                    foreach ($products as $product){
+                        printProduct($product);
+                    }
+                    
+                    ?>
+
+                
                 </div>
 
             </div>

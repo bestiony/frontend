@@ -260,6 +260,10 @@ nav ul li a:hover{
     min-height: 400px;
 }
 
+#popular_products .col-5 a{
+    text-decoration: none;
+}
+
 .col-5:hover{
     transform: translateY(-10px);
 }
@@ -292,12 +296,18 @@ nav ul li a:hover{
 }
 
 .add_to_cart{
-    display: inline-block;
+    position: absolute;
     right: 0px;
     bottom: 0px;
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
     font-size: 1.5em;
 }
+
+.add_to_cart:hover{
+    color: #6f40cf;
+}
+
 
 .favorite{
     position: absolute;
@@ -580,8 +590,13 @@ table .table-left-col{
     cursor: pointer;
 }
 
-
-
+.single-product .col-2 h1, .single-product .col-2 p{
+    color: #000;
+}
+.single-product .col-2 h1{
+    font-size: 40px;
+    line-height: 50px;
+}
 
 /* -----------------Cart items ------------ */
 

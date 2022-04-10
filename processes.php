@@ -2,15 +2,7 @@
 
 //----------- reused data ----------------
 
-$products = $_SESSION['products'] ?? array();
-
-$cart = $_SESSION['cart'] ?? array();
-
-$categories = $_SESSION['categories'] ?? array();
-
-$brands = $_SESSION['brands'] ?? array();
-
-$prices = $_SESSION['prices'] ?? array();
+include_once "./snipets/varriables.php";
 
 
 
@@ -102,11 +94,11 @@ $_SESSION['prices'] = $prices;
 
 // ------------- debugger -------------
 
-// echo "<pre>";
+echo "<pre>";
 // print_r($prices);
 // print_r($categories);
 // print_r($brands);
-// print_r($products);
+print_r($products);
 // print_r($details);
 // print_r($_SESSION['products']);
 // print_r($_SESSION);

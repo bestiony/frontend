@@ -2,7 +2,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <img src="./images/logo.png" />
+                    <a href="./index.php"><img  src="./images/logo.png" /></a>
                 </div>
                 <div class="searchbar">
                     <form action="" class="search">

@@ -1,5 +1,6 @@
 <?php session_start();
 include_once "./processes.php";
+include_once "./snipets/functions.php";
 include "./snipets/html_head.php";
 ?>
 
@@ -72,11 +73,12 @@ include "./snipets/html_head.php";
 
 
             <?php 
+                // this is to randomize the process
                 $chosen = array();
                 for ($i = 0; $i < 4; $i++){
                     $id = rand(0,11);
                     $products[$id]['photos'][0];
-
+                    // to avoid repetition 
                     if (empty($chosen)){
                         $chosen[] = $id;
                     } else if (!in_array($id, $chosen)){
@@ -85,57 +87,11 @@ include "./snipets/html_head.php";
                         $i--;
                         continue;
                     }
-                    
-                    echo "
-                    <div class='col-5 product-box'>
-                        <div class='product_photo'>
-                            <img src='".$products[$id]['photos'][0]."'>
-                        </div>
-                        <div>
-                        <div class='favorite'>
-                            <i class='fa fa-heart-o'></i>
-                        </div>
-                        <h4>".substr($products[$id]['title'],0,15)."</h4>
-                        <p>".substr($products[$id]['top'],0,15)."...</p>
-                        <div class='rating'>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                        </div>
-                        <div class='price'>
-                            <div class='upper'>$</div><span>".$products[$id]['price']."</span>
-                        </div>
-                        <a class='add_to_cart' href=''>
-                            <i class='fa fa-cart-plus'></i>
-                        </a>
-                        </div>
-                    </div>";
+
+                    printProduct($products[$id]);
                 }
             
             ?>
-
-            <!-- <div class="col-5 product-box">
-                <img src="./images/macbook.jpg" alt="">
-                <div class="favorite">
-                    <i class="fa fa-heart-o"></i>
-                </div>
-                <h4>MacBook Pro,M1</h4>
-                <p>really good</p>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    
-                </div>
-                <div class="price">
-                    <div class="upper">$</div><span>1200</span>
-                </div>
-                <a class="add_to_cart" href=""><i class="fa fa-cart-plus"></i></a>
-            </div> -->
         </div>
     </div>
 
