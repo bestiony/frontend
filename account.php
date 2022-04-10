@@ -1,4 +1,5 @@
 <?php session_start();
+include_once "./snipets/varriables.php";
 include "./snipets/html_head.php";
 ?>
 
@@ -71,3 +72,4 @@ include "./snipets/html_head.php";
 </body>
 
 </html>
+<?php include_once "./snipets/updateSession.php";?>

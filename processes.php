@@ -94,11 +94,11 @@ $_SESSION['prices'] = $prices;
 
 // ------------- debugger -------------
 
-echo "<pre>";
+// echo "<pre>";
 // print_r($prices);
 // print_r($categories);
 // print_r($brands);
-print_r($products);
+// print_r($products);
 // print_r($details);
 // print_r($_SESSION['products']);
 // print_r($_SESSION);

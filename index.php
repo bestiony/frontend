@@ -168,3 +168,4 @@ include "./snipets/html_head.php";
 </body>
 
 </html>
+<?php include_once "./snipets/updateSession.php";?>

@@ -5,9 +5,9 @@
                     <a href="./index.php"><img  src="./images/logo.png" /></a>
                 </div>
                 <div class="searchbar">
-                    <form action="" class="search">
+                    <form action="./products.php" class="search" id="searchform">
                         <input onclick="setVisible('visible')" onblur="setVisible('hidden')" id="searchInput" type="text" name="searchwords" placeholder="what can we get you first?" />
-                        <a href="" class="searchbtn"><i class="fa fa-search"></i> </a>
+                        <a href="#" onclick="document.getElementById('searchform').submit();" class="searchbtn" name='searchButton'><i class="fa fa-search"></i> </a>
                     </form>
                 </div>
                 <nav>

@@ -73,7 +73,15 @@ if (isset($_GET['id'])){
                         <tr>
                             <td class="table-left-col">Color</td>
                             <td class="table-right-col"><?php echo $product['color'] ?></td>
-                        </tr>                        
+                        </tr> 
+                        <tr>
+                            <td class="table-left-col">Model Name</td>
+                            <td class="table-right-col"><?php echo $product['ModelName'] ?></td>
+                        </tr> 
+                        <tr>
+                            <td class="table-left-col">Category</td>
+                            <td class="table-right-col"><?php echo $product['category'] ?></td>
+                        </tr> 
                     </table>
                 </div>
                 <br>
@@ -119,3 +127,4 @@ if (isset($_GET['id'])){
 </body>
 
 </html>
+<?php include_once "./snipets/updateSession.php";?>

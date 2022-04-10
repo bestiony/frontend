@@ -10,3 +10,8 @@ $brands = $_SESSION['brands'] ?? array();
 
 $prices = $_SESSION['prices'] ?? array();
 
+$queryList = $_SESSION['queryList'] ?? array();
+
+$queryList[]=$_SERVER["REQUEST_URI"];
+
+$show = $_SESSION['show'] ?? $products;

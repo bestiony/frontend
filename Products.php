@@ -6,8 +6,23 @@ if (empty($products)){
     exit;
 }
 
-if (strlen($_SERVER['QUERY_STRING'])== 0){
+// if (strlen($_SERVER['QUERY_STRING'])== 0){
 
+// }
+
+// search 
+if (isset($_GET['searchwords'])) {
+    $searchResults = array();
+    foreach ($products as $product){
+            $id = $product['id'];
+            $matchName = stripos($product['ModelName'], $_GET['searchwords'])!==false;
+            $matchTitle = stripos($product['title'], $_GET['searchwords'])!==false;
+            $matchDescription =stripos($product['description'], $_GET['searchwords'])!==false;
+        if($matchName || $matchDescription || $matchTitle){
+            $searchResults[$id] = $product;
+        }
+    }
+    $show = $searchResults;
 }
 
 include "./snipets/html_head.php";
@@ -66,7 +81,7 @@ include "./snipets/html_head.php";
                 <div class="row All-products-row" id="popular_products">
 
                     <?php 
-                    foreach ($products as $product){
+                    foreach ($show as $product){
                         printProduct($product);
                     }
                     
@@ -102,3 +117,4 @@ include "./snipets/html_head.php";
 </body>
 
 </html>
+<?php include_once "./snipets/updateSession.php";?>

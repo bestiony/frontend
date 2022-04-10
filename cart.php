@@ -1,4 +1,5 @@
 <?php session_start();
+include_once "./snipets/varriables.php";
 include "./snipets/html_head.php";
 ?>
 
@@ -11,27 +12,39 @@ include "./snipets/html_head.php";
 
 <!-- -----------------------Cart Items ------------------ -->
     <div class="small-container cart_page">
+        <h2 class="title">Shopping Cart</h2>
         <table>
             <tr>
                 <th>Products</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
             </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="./images/macbook.jpg" alt="">
-                        <div>
-                            <p>Mac Book Pro</p>
-                            <small>Price $1200</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$1200</td>
-            </tr>
+
+            <?php
+            foreach ($cart as $item) {
+                $product = $products[$item];
+                    echo "
+                    <tr>
+                        <td>
+                            <div class='cart-info'>
+                                <img src='".$product['photos'][0]."' >
+                                <div>
+                                    <p>".$product['ModelName']."</p>
+                                    <small>Price $".$product['price']."</small>
+                                    <br>
+                                    <a href='./microprocesses/cart_add_remove.php?cart=remove&id=".$product['id']."'>Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td><input id type='number' value='1'></td>
+                        <td>$".$product['price']."</td>
+                    </tr>
+                    
+                    ";
+                }
+            
+
+            ?>
         </table>
 
         <div class="total-price">
@@ -56,3 +69,4 @@ include "./snipets/html_head.php";
 </body>
 
 </html>
+<?php include_once "./snipets/updateSession.php";?>
