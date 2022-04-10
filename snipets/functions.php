@@ -19,7 +19,7 @@ function printProduct($product)
         $cartIcon = "style='color: #D21F3C;'";
     }
 
-    $link = "productdetails.php?id=".$product['id'];
+    $link = "ProductDetails.php?id=".$product['id'];
     $image = "<a href='$link'><img src='".$product['photos'][0]."'></a>";
     $title = "<a href='$link'><h4>".substr($product['title'],0,21)."</h4></a>";
     echo "
