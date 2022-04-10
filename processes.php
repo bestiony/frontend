@@ -83,11 +83,7 @@ if (!isset($_SESSION['products'])) {
 
 
 // update the session array with the needed special arrays and vaariables 
-$_SESSION['products'] = $products;
-$_SESSION['categories'] = $categories;
-$_SESSION['brands'] = $brands;
-$_SESSION['cart'] = $cart;
-$_SESSION['prices'] = $prices;
+
 
 
 
@@ -95,7 +91,7 @@ $_SESSION['prices'] = $prices;
 // ------------- debugger -------------
 
 // echo "<pre>";
-// print_r($prices);
+// print_r($show);
 // print_r($categories);
 // print_r($brands);
 // print_r($products);
@@ -104,7 +100,7 @@ $_SESSION['prices'] = $prices;
 // print_r($_SESSION);
 
 
-
+include_once "./snipets/updateSession.php";
 // ::TODO : you might have to move this or change the "r" above to save changes
 if (isset($data)) {
     fclose($data);

@@ -1,14 +1,15 @@
 <?php session_start();
-include_once "./snipets/varriables.php";
 include_once "./snipets/functions.php";
+include_once "./snipets/varriables.php";
+
 if (empty($products)){
     include_once "./snipets/404.php";
     exit;
 }
 
-// if (strlen($_SERVER['QUERY_STRING'])== 0){
-
-// }
+if (strlen($_SERVER['QUERY_STRING'])== 0){
+    $show = $products;
+}
 
 // search 
 if (isset($_GET['searchwords'])) {
