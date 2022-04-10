@@ -15,7 +15,7 @@ function printProduct($product)
     }
     
     if (in_array($product['id'], $_SESSION['cart'])){
-        $cartLink = "";
+        $cartLink = "remove";
         $cartIcon = "style='color: #D21F3C;'";
     }
 
