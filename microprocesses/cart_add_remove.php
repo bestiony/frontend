@@ -8,9 +8,9 @@ if (!(isset($_GET['cart']) && isset($_GET['id']))){
 
 $id = $_GET['id'];
 $decision = $_GET['cart'];
-
+$quantity = $_GET['quantity']?? 1;
 if($decision == "add"){
-    $cart[$id]= $id;
+    $cart[$id]= $quantity;
 } else if ($decision == "remove"){
     unset($cart[$id]);
 }

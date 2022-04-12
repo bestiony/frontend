@@ -14,4 +14,6 @@ $queryList = $_SESSION['queryList'] ?? array();
 
 $queryList[]=$_SERVER["REQUEST_URI"];
 
+$filter = $_SESSION['filter'] ?? array();
+
 $show = $_SESSION['show'] ?? $products;

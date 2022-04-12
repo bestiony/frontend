@@ -1,4 +1,5 @@
 <?php
+$show = $_SESSION['show'] ?? $products;
 
 $_SESSION['products'] =$products ;
 
@@ -13,3 +14,5 @@ $_SESSION['prices']= $prices  ;
 $_SESSION['queryList']= $queryList  ;
 
 $_SESSION['show'] = $show ;
+
+$_SESSION['filter'] = $filter ;

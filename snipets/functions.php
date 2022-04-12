@@ -7,16 +7,16 @@ function printProduct($product)
     $favoriteLink = "add";
     $favIcon = "fa fa-heart-o";
     $showIcon = "";
-
     if ($product['favorite']>0){
         $favoriteLink = "remove";
         $favIcon = "fa fa-heart";
         $showIcon = "style='opacity: 1;'";
     }
     
-    if (in_array($product['id'], $_SESSION['cart'])){
+    if (array_key_exists($product['id'], $_SESSION['cart'])){
         $cartLink = "remove";
         $cartIcon = "style='color: #D21F3C;'";
+
     }
 
     $link = "ProductDetails.php?id=".$product['id'];

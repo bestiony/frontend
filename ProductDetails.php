@@ -17,6 +17,8 @@ if (isset($_GET['id'])){
     <?php
     include "./snipets/header_and_cover.php";
     ?>
+    <!-- ---------------- top button ------------ -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
     <!-- -------------------- Single Product Details -------------------- -->
 
@@ -53,19 +55,19 @@ if (isset($_GET['id'])){
                     <span>512 GB</span>
                     <span>1 TB</span>
                 </div> -->
-                <form action="">
-                    <input type="hidden" name="id" value="">
-                    <input type="number" name="quantity" value="1" id="">
-                    <button class="btn" type="submit" name="addToCart" value="add">Add to Cart</button>
+                <form action="./microprocesses/cart_add_remove.php">
+                    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                    <input type="number" min="0" name="quantity" value="1" id="">
+                    <button class="btn" type="submit" name="cart" value="add">Add to Cart</button>
                 </form>
                 <h3>Product Details</h3>
                 <br>
                 <div class="table_details">
                     <table>
-                        <tr> 
+                    <tr>
                             <td class="table-left-col">Model Name</td>
-                            <td class="table-right-col">MacBook Pro</td>
-                        </tr>
+                            <td class="table-right-col"><?php echo $product['ModelName'] ?></td>
+                        </tr> 
                         <tr>
                             <td class="table-left-col">Brand</td>
                             <td class="table-right-col"><?php echo $product['brand'] ?></td>
@@ -73,10 +75,6 @@ if (isset($_GET['id'])){
                         <tr>
                             <td class="table-left-col">Color</td>
                             <td class="table-right-col"><?php echo $product['color'] ?></td>
-                        </tr> 
-                        <tr>
-                            <td class="table-left-col">Model Name</td>
-                            <td class="table-right-col"><?php echo $product['ModelName'] ?></td>
                         </tr> 
                         <tr>
                             <td class="table-left-col">Category</td>
@@ -123,6 +121,17 @@ if (isset($_GET['id'])){
     <script src="./js/toggleMenu.js" ></script>
     <script src="./js/blackCover.js" ></script>
     <script src="./js/product_small_image_toggle.js"></script>
+    <script src="./js/scroll_top_button.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+    var scrollpos = localStorage.getItem('scrollposSingleProduct');
+    if (scrollpos) window.scrollTo(0, scrollpos);
+});
+
+window.onbeforeunload = function(e) {
+    localStorage.setItem('scrollposSingleProduct', window.scrollY);
+};
+    </script>
     
 </body>
 

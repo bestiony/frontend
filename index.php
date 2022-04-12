@@ -9,7 +9,8 @@ include "./snipets/html_head.php";
     <?php
     include "./snipets/header_and_cover.php";
     ?>
-
+    <!-- ---------------- top button ------------ -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <!-- ------------ background --------------- -->
     <div class="area homepage-bg" id="indexbg">
         <ul class="circles">
@@ -51,17 +52,19 @@ include "./snipets/html_head.php";
         <h2 class="title">Categories</h2>
         <div class="row">
 
-            <?php 
-                foreach ($categories as $category){
-                    // $category = str_replace("_"," ", $category);
-                    echo "
+            <?php
+            foreach ($categories as $category) {
+                // $category = str_replace("_"," ", $category);
+                echo " 
                     <div class='col-4'>
-                        <img src='./images/$category.png'>
-                        <h4>".str_replace("_"," ", $category)."</h4>
+                        <a style='display: inline-block;'   href='./Products.php?category=$category'>
+                            <img src='./images/$category.png'>
+                            <h4>" . str_replace("_", " ", $category) . "</h4>
+                        </a>
                     </div>
                     
                     ";
-                }
+            }
             ?>
         </div>
     </div>
@@ -72,25 +75,25 @@ include "./snipets/html_head.php";
         <div class="row popular_products" id="popular_products">
 
 
-            <?php 
-                // this is to randomize the process
-                $chosen = array();
-                for ($i = 0; $i < 4; $i++){
-                    $id = rand(0,11);
-                    $products[$id]['photos'][0];
-                    // to avoid repetition 
-                    if (empty($chosen)){
-                        $chosen[] = $id;
-                    } else if (!in_array($id, $chosen)){
-                        $chosen[] = $id;
-                    } else {
-                        $i--;
-                        continue;
-                    }
-
-                    printProduct($products[$id]);
+            <?php
+            // this is to randomize the process
+            $chosen = array();
+            for ($i = 0; $i < 4; $i++) {
+                $id = rand(0, 11);
+                $products[$id]['photos'][0];
+                // to avoid repetition 
+                if (empty($chosen)) {
+                    $chosen[] = $id;
+                } else if (!in_array($id, $chosen)) {
+                    $chosen[] = $id;
+                } else {
+                    $i--;
+                    continue;
                 }
-            
+
+                printProduct($products[$id]);
+            }
+
             ?>
         </div>
     </div>
@@ -163,9 +166,21 @@ include "./snipets/html_head.php";
     ?>
 
     <!-- ---------------- scripts ---------------- -->
-    <script src="./js/toggleMenu.js" ></script>
-    <script src="./js/blackCover.js" ></script>
+    <script src="./js/toggleMenu.js"></script>
+    <script src="./js/blackCover.js"></script>
+    <script src="./js/scroll_top_button.js"></script>
+    <!-- ----------- stay on the same position when refershed -------- -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var scrollpos = localStorage.getItem("scrollposIndex");
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem("scrollposIndex", window.scrollY);
+        };
+    </script>
 </body>
 
 </html>
-<?php include_once "./snipets/updateSession.php";?>
+<?php include_once "./snipets/updateSession.php"; ?>

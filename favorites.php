@@ -25,13 +25,16 @@ include "./snipets/html_head.php";
             <?php
             foreach ($products as $product) {
                 if ($product['favorite'] == 1) {
+                    $link = "ProductDetails.php?id=".$product['id'];
+                    $image = "<a href='$link'><img src='".$product['photos'][0]."'></a>";
+                    $name = "<a href='$link'><p>".$product['ModelName']."</p></a>";
                     echo "
                     <tr>
                         <td>
                             <div class='cart-info'>
-                                <img src='".$product['photos'][0]."' >
+                                $image
                                 <div>
-                                    <p>".$product['ModelName']."</p>
+                                    $name
                                     <small>Price ".$product['price']."</small>
                                     <br>
                                     <a href='./microprocesses/favorite.php?favorite=remove&id=".$product['id']."'>Remove</a>

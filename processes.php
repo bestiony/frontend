@@ -17,6 +17,8 @@ if (!isset($_SESSION['products'])) {
     $keys = fgetcsv($data);
     $details = array();
 
+
+
     // ---------- organise data 
     while (!feof($data)) {
         $details[] = fgetcsv($data);
@@ -44,7 +46,7 @@ if (!isset($_SESSION['products'])) {
     foreach ($products as $id => $product) {
         // ------ make favorites
         // set all products to be not in favorites 
-        $product['favorite'] = 0;
+        $products[$id]['favorite'] = 0;
 
         //------- make categories--------
         // get all categories names
