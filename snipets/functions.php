@@ -51,3 +51,47 @@ function printProduct($product)
         </div>
         ";
 }
+
+
+function devide_into_pages($list)
+{
+    $items_per_page = $_SESSION['items_per_page'];
+    $array_length = count($list);
+    $page_index = 0;
+    $start = 0;
+    $pages = array();
+    while ($start < $array_length) {
+        $pages[$page_index] = array_slice($list, $start, $items_per_page);
+        $start += 15;
+        $page_index++;
+    }
+    return $pages;
+}
+
+function make_pages_buttons($pages)
+{
+    echo "<div class='page-btns'>";
+    if (!empty($pages)) {
+        $array_length = count($pages);
+        if ($array_length > 1) {
+            $currentPage = $_GET['page']?? 0;
+            $previousPage = $currentPage == 0? $currentPage: $currentPage-1;
+            $nextPage = $currentPage == $array_length-1 ? $currentPage : $currentPage +1;
+            echo "<a href='./Products.php?page=$previousPage'><span>&#8592;</span></a>";
+            foreach ($pages as $key => $page) {
+                $style = $key == $currentPage? "style ='background: #6f40cf;color: #fff;'" :"" ;
+                echo "<a href='./Products.php?page=$key'><span $style>$key</span></a>";
+            }
+            echo "<a href='./Products.php?page=$nextPage'><span>&#8594;</span></a>";
+        }
+    }
+    echo "</div>";
+}
+
+function refresh_page()
+{
+    echo '<script>window.location="' . $_SERVER["PHP_SELF"] . '"
+            alert("item was not found");
+    </script>';
+    // $_SERVER["PHP_SELF"]
+}

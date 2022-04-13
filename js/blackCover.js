@@ -8,6 +8,9 @@ let cover = document.getElementById("cover");
 
         function setVisible (value){
             cover.style.visibility = value;
+            // if (value == 'hidden'){
+            //     filterBtn.style.transform = "scale(10)";
+            // }
         }
 
 

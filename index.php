@@ -79,7 +79,7 @@ include "./snipets/html_head.php";
             // this is to randomize the process
             $chosen = array();
             for ($i = 0; $i < 4; $i++) {
-                $id = rand(0, 11);
+                $id = rand(0, 32);
                 $products[$id]['photos'][0];
                 // to avoid repetition 
                 if (empty($chosen)) {

@@ -48,12 +48,8 @@ include_once "./snipets/updateSession.php";
 <body>
     <div class="small-container">
             <?php 
-            echo count($_GET);
-            $sth = "iBUYPOWER";
-            $else = trim($sth);
-            $fact = $sth == $else;
-            var_dump($_GET); 
-            echo strlen($brands[2]);
+        
+            echo count($search_history);
 
             foreach($tests as $title => $issue){
                 echo "<div class='issue'><h1>$title</h1>";

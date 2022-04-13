@@ -14,51 +14,50 @@ include "./snipets/html_head.php";
     <!-- -----------------------Cart Items ------------------ -->
     <div class="small-container cart_page">
         <h2 class="title">Favorites</h2>
-        <table>
-            <tr>
-                <th>Products</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
 
 
+
+
+        <div class="row favorites_container">
             <?php
+            $empty = true;
             foreach ($products as $product) {
                 if ($product['favorite'] == 1) {
-                    $link = "ProductDetails.php?id=".$product['id'];
-                    $image = "<a href='$link'><img src='".$product['photos'][0]."'></a>";
-                    $name = "<a href='$link'><p>".$product['ModelName']."</p></a>";
+                    $link = "ProductDetails.php?id=" . $product['id'];
+                    $image = "<a href='$link'><img src='" . $product['photos'][0] . "'></a>";
+                    $name = "<a href='$link'><p>" . $product['ModelName'] . "</p></a>";
                     echo "
-                    <tr>
-                        <td>
-                            <div class='cart-info'>
-                                $image
-                                <div>
-                                    $name
-                                    <small>Price ".$product['price']."</small>
-                                    <br>
-                                    <a href='./microprocesses/favorite.php?favorite=remove&id=".$product['id']."'>Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    
+                    <div class='favorite_card'>
+                        $image
+                        <div class='fav_info'>
+                            $name
+                            <small>Price $" . $product['price'] . "</small>
+                            <br>
+                            <a href='./microprocesses/favorite.php?favorite=remove&id=" . $product['id'] . "'>Remove</a>
+                        </div>
+                    </div>
                     ";
+                    $empty = false;
                 }
+            }
+            if ($empty){
+                echo "<div style='text-align: center;'><i style='font-size: 100px;' class='fa fa-thumbs-o-up'></i><br>
+                <h2>You have no favorites yet</h2>
+                <a style='color: #D21F3C'  href='./Products.php'>Browse Products</a>
+                </div>";
             }
 
             ?>
+            <!-- <div class='favorite_card'>
+                <img src='./images/macbook.jpg'>
+                <div class='fav_info'>
+                    <p>Mac book 2021</p>
+                    <small>Price $1200</small>
+                    <br>
+                    <a href=''>Remove</a>
+                </div>
+            </div> -->
             
-        </table>
-
-        <div class="total-price">
-            <table>
-                <tr>
-                    <td>Total</td>
-                    <td>$ 1200</td>
-                </tr>
-            </table>
         </div>
     </div>
 
@@ -74,4 +73,4 @@ include "./snipets/html_head.php";
 </body>
 
 </html>
-<?php include_once "./snipets/updateSession.php";?>
+<?php include_once "./snipets/updateSession.php"; ?>

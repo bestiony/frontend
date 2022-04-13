@@ -16,3 +16,7 @@ $_SESSION['queryList']= $queryList  ;
 $_SESSION['show'] = $show ;
 
 $_SESSION['filter'] = $filter ;
+
+$_SESSION['items_per_page'] = $items_per_page ;
+
+$_SESSION['search_history'] = $search_history ;

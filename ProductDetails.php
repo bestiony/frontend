@@ -72,6 +72,16 @@ if (isset($_GET['id'])){
                             <td class="table-left-col">Brand</td>
                             <td class="table-right-col"><?php echo $product['brand'] ?></td>
                         </tr>
+                        <?php 
+                        if (strlen($product['color'])>1){
+                            echo "
+                            <tr>
+                            <td class='table-left-col'>Color</td>
+                            <td class='table-right-col'><?php echo ".$product['color']." ?></td>
+                        </tr> 
+                            ";
+                        }
+                        ?>
                         <tr>
                             <td class="table-left-col">Color</td>
                             <td class="table-right-col"><?php echo $product['color'] ?></td>
@@ -95,14 +105,19 @@ if (isset($_GET['id'])){
     <div class="small-container" id="popular_products">
         <div class="row row-2">
         <h2>Related Products</h2>
-        <p>View More</p>
+        <a href="./Products.php?category=<?php echo $product['category'];?>"><p>View More</p></a>
         </div>
         <div class="row">
 
             <?php 
+            $only4 = 0;
             foreach ($products as $related){
                 if ($related['category'] == $product['category']){
                     printProduct($related);
+                    $only4++;
+                }
+                if ($only4 == 4){
+                    break;
                 }
             }
             

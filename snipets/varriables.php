@@ -17,3 +17,7 @@ $queryList[]=$_SERVER["REQUEST_URI"];
 $filter = $_SESSION['filter'] ?? array();
 
 $show = $_SESSION['show'] ?? $products;
+
+$items_per_page = $_SESSION['items_per_page']?? 15;
+
+$search_history = $_SESSION['search_history'] ?? array();

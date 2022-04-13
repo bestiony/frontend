@@ -35,36 +35,38 @@ include "./snipets/html_head.php";
         <h2>Add a New Product</h2>
         <div class="row">
             <div class="col-2">
-                <form action="">
+                <form action="./microprocesses/add_product.php">
+                    <input type="hidden" name="id" value="<?php echo count($products); ?>">
                     <div class="drop-down">
                         <span>Categories</span>
                         <select name="category" id="">
-                            <option value="Laptops">Laptops</option>
-                            <option value="Desktop">Desktop</option>
-                            <option value="Monitors">Monitors</option>
-                            <option value="Graphic_Cards">Graphic Cards</option>
+                            <?php 
+                            foreach ($categories as $category){
+                                echo "<option value='$category'>".str_replace("_", " ", $category)."</option>";
+                            }
+                            ?>
+                            
                         </select>
                     </div>
+                    <input type="hidden" name="top" value="NEW">
+                    <input type="text" placeholder="Model name" name="ModelName">
                     <input type="text" placeholder="Title" name="title">
-                    <input type="text" placeholder="Model name" name="model_name">
-                    
-
                     <input type="text" placeholder="Brand" name="brand">
-                    <input type="number" id="" placeholder="Price $" name="price">
+                    <input  min="0" type="number" id="" placeholder="Price $" name="price">
                     <input type="text" placeholder="color" name="color">
                     <textarea id="" cols="30" rows="10" placeholder="Description" name="description"></textarea>
                     <div class="images_urls">
                         <input onblur="showphoto(url,show),showphoto(url,image1)" id="url" type="url"
-                            name="image-links[]" placeholder="image 1 url" title="please use a valid img url">
-                        <input onblur="showphoto(url2,image2)" id="url2" type="url" name="image-links[]"
+                            name="photos[]" placeholder="image 1 url" title="please use a valid img url">
+                        <input onblur="showphoto(url2,image2)" id="url2" type="url" name="photos[]"
                             placeholder="image 2 url" title="please use a valid img url">
-                        <input onblur="showphoto(url3,image3)" id="url3" type="url" name="image-links[]"
+                        <input onblur="showphoto(url3,image3)" id="url3" type="url" name="photos[]"
                             placeholder="image 3 url" title="please use a valid img url">
-                        <input onblur="showphoto(url4,image4)" id="url4" type="url" name="image-links[]"
+                        <input onblur="showphoto(url4,image4)" id="url4" type="url" name="photos[]"
                             placeholder="image 4 url" title="please use a valid img url">
-
                     </div>
-                    <button type="submit" class="btn" name="submit" value="submit">Publish</button>
+                    <input type="hidden" name="favorite" value="0">
+                    <button type="submit" class="btn">Publish</button>
                 </form>
             </div>
 
